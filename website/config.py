@@ -1,0 +1,1 @@
+CHROME_PROFILE_PATH = "user-data-dir=C:\\Users\\user\\AppData\\Local\\Google\\Chrome\\User Data\\WhatsApp"

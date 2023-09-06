@@ -1,0 +1,9 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1> Name: {{ name}} </h1>
+<h1> Phone Number: {{ phone_number }} </h1>
+<h1> Reason Of Visit: {{ reason_of_visit }} </h1>
+<h1> Your Token Number: {{ my_token }} </h1>
+{% endblock content %}

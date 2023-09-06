@@ -1,0 +1,5 @@
+Django==3.2.3
+pymongo==3.11.4
+pyperclip==1.8.2
+selenium==3.141.0
+xhtml2pdf==0.2.5

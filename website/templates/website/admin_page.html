@@ -1,0 +1,119 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="d-flex justify-content-around">
+    <form class="d-inline-flex" method="POST" action="{% url 'admin_page' %}">
+        {% csrf_token %}
+        <button type="submit" class="ajax-next-token btn btn-outline-success" name="update_current_token"
+            value="update_current_token">Next Token</button>
+    </form>
+    <form class="d-inline-flex" method="POST" action="{% url 'admin_page' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-success" name="clear_patients" value="clear_patients">Clear Today's
+            Patients</button>
+    </form>
+</div>
+<br>
+<br>
+<h2>Today's Patients [10:00am - 01:00pm]</h2>
+<br>
+{% if today_mdocuments|length %}
+<div class="table table-responsive">
+    <table class="table table-bordered">
+        <tr class="text-primary">
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Date</th>
+            <th>Token Number</th>
+        </tr>
+        {% for document in today_mdocuments %}
+        <tr>
+            {% for attribute, value in document %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<h4>No patients in this slot</h4>
+{% endif %}
+<br>
+<br>
+<h2>Today's Patients [05:00pm - 08:00pm]</h2>
+<br>
+{% if today_edocuments|length %}
+<div class="table table-responsive">
+    <table class="table table-bordered">
+        <tr class="text-primary">
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Date</th>
+            <th>Token Number</th>
+        </tr>
+        {% for document in today_edocuments %}
+        <tr>
+            {% for attribute, value in document %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<h4>No patients in this slot</h4>
+{% endif %}
+
+<br>
+<br>
+<h2>Tomorrow's Patients [10:00am - 01:00pm]</h2>
+<br>
+{% if tomorrow_mdocuments|length %}
+<div class="table table-responsive">
+    <table class="table table-bordered">
+        <tr class="text-primary">
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Date</th>
+            <th>Token Number</th>
+        </tr>
+        {% for document in tomorrow_mdocuments %}
+        <tr>
+            {% for attribute, value in document %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<h4>No patients in this slot</h4>
+{% endif %}
+<br>
+<br>
+<h2>Tomorrow's Patients [05:00pm - 08:00pm]</h2>
+<br>
+{% if tomorrow_edocuments|length %}
+<div class="table table-responsive">
+    <table class="table table-bordered">
+        <tr class="text-primary">
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Date</th>
+            <th>Token Number</th>
+        </tr>
+        {% for document in tomorrow_edocuments %}
+        <tr>
+            {% for attribute, value in document %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<h4>No patients in this slot</h4>
+{% endif %}
+{% endblock content %}
